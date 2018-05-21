@@ -19,16 +19,15 @@ import model.User;
  */
 public class loginScreen extends javax.swing.JFrame {
 
-    /**
-     * Creates new form loginScreen
-     */
+    int mouseX;
+    int mouseY;
     checkEmpty check = new checkEmpty();
+
     public loginScreen() {
         initComponents();
         check.start();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -55,6 +54,19 @@ public class loginScreen extends javax.swing.JFrame {
         kGradientPanel1.setkEndColor(new java.awt.Color(0, 204, 204));
         kGradientPanel1.setkStartColor(new java.awt.Color(153, 0, 153));
         kGradientPanel1.setOpaque(false);
+        kGradientPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                kGradientPanel1MouseDragged(evt);
+            }
+        });
+        kGradientPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                kGradientPanel1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                kGradientPanel1MouseReleased(evt);
+            }
+        });
         kGradientPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Sinhala MN", 1, 48)); // NOI18N
@@ -225,9 +237,8 @@ public class loginScreen extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
-    
-    
+
+
     private void txtLoginUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLoginUserActionPerformed
@@ -235,15 +246,15 @@ public class loginScreen extends javax.swing.JFrame {
     private void btnLoginLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginLoginActionPerformed
         loading.setVisible(true);
         loging.setVisible(false);
-        
+
         new java.util.Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 loading.setVisible(false);
                 loging.setVisible(true);
             }
-        },1000 *5);
-       
+        }, 1000 * 5);
+
     }//GEN-LAST:event_btnLoginLoginActionPerformed
 
     private void btnLoginLoginMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginLoginMouseReleased
@@ -266,25 +277,45 @@ public class loginScreen extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btnLoginExitMouseReleased
 
-    class checkEmpty extends Thread{
+    private void kGradientPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kGradientPanel1MousePressed
+        setOpacity((float) 0.8);
+        mouseX = evt.getX();
+        mouseY = evt.getY();
+    }//GEN-LAST:event_kGradientPanel1MousePressed
+
+    private void kGradientPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kGradientPanel1MouseReleased
+        setOpacity((float) 1.0);
+    }//GEN-LAST:event_kGradientPanel1MouseReleased
+
+    private void kGradientPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kGradientPanel1MouseDragged
+
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - mouseX, y - mouseY);
+    }//GEN-LAST:event_kGradientPanel1MouseDragged
+
+    class checkEmpty extends Thread {
 
         @Override
         public void run() {
             System.out.println("Thread started");
-            while(true){
+            while (true) {
                 try {
                     sleep(1);
-                    if(txtLoginUser.getText().trim().isEmpty() || txtLoginPass.getText().trim().isEmpty()){
+                    if (txtLoginUser.getText().trim().isEmpty() || txtLoginPass.getText().trim().isEmpty()) {
                         btnLoginLogin.setEnabled(false);
-                        
-                    }else btnLoginLogin.setEnabled(true);
+
+                    } else {
+                        btnLoginLogin.setEnabled(true);
+                    }
                 } catch (InterruptedException ex) {
                     Logger.getLogger(loginScreen.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
-        
-}
+
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
