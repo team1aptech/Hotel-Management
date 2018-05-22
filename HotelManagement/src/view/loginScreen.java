@@ -72,7 +72,7 @@ public class loginScreen extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Sinhala MN", 1, 48)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText(" Aptech Hotel ");
-        kGradientPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 250, 40));
+        kGradientPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 330, 40));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hotel-icon-10.png"))); // NOI18N
         jLabel5.setText("jLabel5");
@@ -83,10 +83,8 @@ public class loginScreen extends javax.swing.JFrame {
 
         loging.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtLoginUser.setBackground(new java.awt.Color(255, 255, 255));
         txtLoginUser.setForeground(new java.awt.Color(0, 153, 153));
         txtLoginUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 204, 204)));
-        txtLoginUser.setOpaque(false);
         txtLoginUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLoginUserActionPerformed(evt);
@@ -101,8 +99,8 @@ public class loginScreen extends javax.swing.JFrame {
         lblLoginUser.setForeground(new java.awt.Color(102, 102, 102));
         lblLoginUser.setText("Username");
 
-        txtLoginPass.setBackground(new java.awt.Color(255, 255, 255));
         txtLoginPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 153, 153)));
+        txtLoginPass.setOpaque(false);
 
         jLabel1.setFont(new java.awt.Font("Sinhala MN", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 153, 255));
@@ -252,21 +250,26 @@ public class loginScreen extends javax.swing.JFrame {
             public void run() {
                 loading.setVisible(false);
                 loging.setVisible(true);
+              if(btnLoginLogin.isEnabled()){
+            try {
+                if(User.checkPass(txtLoginUser.getText().trim(), txtLoginPass.getText().trim())){
+                    new JFMain().setVisible(true);
+                }else {
+                    loging.setVisible(true);
+                    loading.setVisible(false);
+                }
+            } catch (SQLException | ClassNotFoundException ex) {
+                Logger.getLogger(loginScreen.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
             }
         }, 1000 * 5);
 
     }//GEN-LAST:event_btnLoginLoginActionPerformed
 
     private void btnLoginLoginMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginLoginMouseReleased
-//        if(btnLoginLogin.isEnabled()){
-//            try {
-//                if(User.checkPass(txtLoginUser.getText().trim(), txtLoginPass.getText().trim())){
-//                    JOptionPane.showMessageDialog(null, "Login Success");
-//                }else JOptionPane.showMessageDialog(null, "Login Faile");
-//            } catch (SQLException | ClassNotFoundException ex) {
-//                Logger.getLogger(loginScreen.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
+       
     }//GEN-LAST:event_btnLoginLoginMouseReleased
 
     private void btnLoginExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginExitActionPerformed
