@@ -14,9 +14,10 @@ MAKHACHHANG varchar(10) primary key,
 TENKHACHHANG nvarchar(30),
 DIACHI nvarchar(50),
 GIOITINH bit,
-CMND int,
+CMND_Passport int,
 SDT int,
 QUOCTICH nvarchar(20),
+
 )
 create table loaiphong(
 MALOAIPHONG varchar(2) primary key,
@@ -29,8 +30,12 @@ TENNHANVIEN nvarchar(30),
 MACHUCVU varchar(5),
 GIOITINH bit,
 NGAYSINH smalldatetime,
+CMND int,
 DIACHI nvarchar(50),
 SDT char(15),
+Luong int,
+PhuCap int,
+/*trangthai*/
 constraint fk_nhanvien_chucvu foreign key(MACHUCVU) references chucvu(MACHUCVU)
 )
 
@@ -42,11 +47,12 @@ MALOAIPHONG varchar(2),
 GIAPHONGMOTGIO int,
 GIAPHONGMOTNGAY int,
 GIAPHONGQUADEM int,
-DONVI varchar(10),
+
 constraint fk_phong_loaiphong foreign key(MALOAIPHONG) references loaiphong(MALOAIPHONG)
 )
 create table hoadon(
 MAHOADON varchar(5) primary key,
+/* Phieu Dang Ky*/
 NGAYTHANHTOAN smalldatetime,
 SOTIENTHANHTOAN int,
 DONVI varchar(5),
@@ -61,13 +67,18 @@ NGAYTHUE smalldatetime,
 NGAYDI smalldatetime,
 MAPHONG varchar(6),
 MAPHIEUDICHVU varchar(5),
+/*trang thai*/
 constraint fk_phieudangky_khachhang foreign key(MAKHACHHANG) references khachhang(MAKHACHHANG),
 constraint fk_phieudangky_nhanvien foreign key(MANHANVIEN) references nhanvien(MANHANVIEN),
 constraint fk_phieudangky_phong foreign key(MAPHONG) references phong(MAPHONG)
 )
 create table phieudichvu(
+
 MAPHIEUDICHVU varchar(5) primary key,
-MAPHIEUDANGKY varchar(5),
+/*MAPHIEUDANGKY varchar(5),
+trang thai
+*/
+MaPhong varchar(6),
 LOAIDICHVU nvarchar(50),
 TENDICHVU nvarchar(50),
 GIADICHVU int,
