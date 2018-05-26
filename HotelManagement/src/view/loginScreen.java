@@ -26,6 +26,10 @@ public class loginScreen extends javax.swing.JFrame {
     public loginScreen() {
         initComponents();
         check.start();
+        txtLoginUser.setBackground(javax.swing.UIManager.getDefaults().getColor("TextArea.disabledBackground"));
+        txtLoginPass.setBackground(javax.swing.UIManager.getDefaults().getColor("TextArea.disabledBackground"));
+        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -82,6 +86,7 @@ public class loginScreen extends javax.swing.JFrame {
         signin.setLayout(new java.awt.CardLayout());
 
         loging.setBackground(new java.awt.Color(255, 255, 255));
+        loging.setOpaque(false);
 
         txtLoginUser.setForeground(new java.awt.Color(0, 153, 153));
         txtLoginUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 204, 204)));
@@ -186,12 +191,12 @@ public class loginScreen extends javax.swing.JFrame {
         signin.add(loging, "card2");
 
         loading.setBackground(new java.awt.Color(255, 255, 255));
+        loading.setOpaque(false);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/blue_loading.gif"))); // NOI18N
-        jLabel2.setText("jLabel2");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lg.ring-loading-gif.gif"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Sinhala MN", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel3.setForeground(new java.awt.Color(153, 51, 255));
         jLabel3.setText("Loggin in ...");
 
         javax.swing.GroupLayout loadingLayout = new javax.swing.GroupLayout(loading);
@@ -199,22 +204,22 @@ public class loginScreen extends javax.swing.JFrame {
         loadingLayout.setHorizontalGroup(
             loadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loadingLayout.createSequentialGroup()
-                .addContainerGap(54, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
-            .addGroup(loadingLayout.createSequentialGroup()
                 .addGap(98, 98, 98)
                 .addComponent(jLabel3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(loadingLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                .addContainerGap())
         );
         loadingLayout.setVerticalGroup(
             loadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loadingLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel3)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         signin.add(loading, "card3");
@@ -238,7 +243,7 @@ public class loginScreen extends javax.swing.JFrame {
 
 
     private void txtLoginUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginUserActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtLoginUserActionPerformed
 
     private void btnLoginLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginLoginActionPerformed
