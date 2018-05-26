@@ -25,9 +25,10 @@ public class loginScreen extends javax.swing.JFrame {
 
     public loginScreen() {
         initComponents();
-        check.start();
         txtLoginUser.setBackground(javax.swing.UIManager.getDefaults().getColor("TextArea.disabledBackground"));
         txtLoginPass.setBackground(javax.swing.UIManager.getDefaults().getColor("TextArea.disabledBackground"));
+        check.start();
+        
         
 
     }
