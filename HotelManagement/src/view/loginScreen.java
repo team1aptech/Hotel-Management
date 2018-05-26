@@ -57,7 +57,6 @@ public class loginScreen extends javax.swing.JFrame {
 
         kGradientPanel1.setkEndColor(new java.awt.Color(0, 204, 204));
         kGradientPanel1.setkStartColor(new java.awt.Color(153, 0, 153));
-        kGradientPanel1.setOpaque(false);
         kGradientPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 kGradientPanel1MouseDragged(evt);
@@ -89,12 +88,8 @@ public class loginScreen extends javax.swing.JFrame {
         loging.setOpaque(false);
 
         txtLoginUser.setForeground(new java.awt.Color(0, 153, 153));
-        txtLoginUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 204, 204)));
-        txtLoginUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLoginUserActionPerformed(evt);
-            }
-        });
+        txtLoginUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        txtLoginUser.setOpaque(false);
 
         ldbLoginPass.setFont(new java.awt.Font("Sinhala MN", 1, 18)); // NOI18N
         ldbLoginPass.setForeground(new java.awt.Color(102, 102, 102));
@@ -104,8 +99,13 @@ public class loginScreen extends javax.swing.JFrame {
         lblLoginUser.setForeground(new java.awt.Color(102, 102, 102));
         lblLoginUser.setText("Username");
 
-        txtLoginPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 153, 153)));
+        txtLoginPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         txtLoginPass.setOpaque(false);
+        txtLoginPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLoginPassActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Sinhala MN", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 153, 255));
@@ -242,10 +242,6 @@ public class loginScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
-    private void txtLoginUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginUserActionPerformed
-        
-    }//GEN-LAST:event_txtLoginUserActionPerformed
-
     private void btnLoginLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginLoginActionPerformed
         loading.setVisible(true);
         loging.setVisible(false);
@@ -301,6 +297,10 @@ public class loginScreen extends javax.swing.JFrame {
         int y = evt.getYOnScreen();
         this.setLocation(x - mouseX, y - mouseY);
     }//GEN-LAST:event_kGradientPanel1MouseDragged
+
+    private void txtLoginPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginPassActionPerformed
+        btnLoginLoginActionPerformed(evt);
+    }//GEN-LAST:event_txtLoginPassActionPerformed
 
     class checkEmpty extends Thread {
 
