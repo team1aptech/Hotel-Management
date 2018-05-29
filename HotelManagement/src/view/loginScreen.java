@@ -5,6 +5,7 @@
  */
 package view;
 
+import java.awt.Color;
 import static java.lang.Thread.sleep;
 import java.sql.SQLException;
 import java.util.TimerTask;
@@ -25,6 +26,7 @@ public class loginScreen extends javax.swing.JFrame {
 
     public loginScreen() {
         initComponents();
+        loging.setBackground(javax.swing.UIManager.getDefaults().getColor("TextArea.disabledBackground"));
         txtLoginUser.setBackground(javax.swing.UIManager.getDefaults().getColor("TextArea.disabledBackground"));
         txtLoginPass.setBackground(javax.swing.UIManager.getDefaults().getColor("TextArea.disabledBackground"));
         check.start();
@@ -82,25 +84,36 @@ public class loginScreen extends javax.swing.JFrame {
         jLabel5.setText("jLabel5");
         kGradientPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 360, 220));
 
+        signin.setBackground(new java.awt.Color(14, 185, 199));
+        signin.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         signin.setOpaque(false);
         signin.setLayout(new java.awt.CardLayout());
 
-        loging.setBackground(new java.awt.Color(255, 255, 255));
+        loging.setBackground(new java.awt.Color(36, 155, 192));
         loging.setOpaque(false);
 
-        txtLoginUser.setForeground(new java.awt.Color(0, 153, 153));
-        txtLoginUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        txtLoginUser.setBackground(new java.awt.Color(36, 155, 192));
+        txtLoginUser.setFont(new java.awt.Font("Sinhala MN", 1, 24)); // NOI18N
+        txtLoginUser.setForeground(new java.awt.Color(255, 255, 255));
+        txtLoginUser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtLoginUser.setBorder(null);
+        txtLoginUser.setCaretColor(new java.awt.Color(255, 255, 255));
         txtLoginUser.setOpaque(false);
 
         ldbLoginPass.setFont(new java.awt.Font("Sinhala MN", 1, 18)); // NOI18N
-        ldbLoginPass.setForeground(new java.awt.Color(102, 102, 102));
+        ldbLoginPass.setForeground(new java.awt.Color(255, 255, 255));
         ldbLoginPass.setText("Password");
 
         lblLoginUser.setFont(new java.awt.Font("Sinhala MN", 1, 18)); // NOI18N
-        lblLoginUser.setForeground(new java.awt.Color(102, 102, 102));
+        lblLoginUser.setForeground(new java.awt.Color(255, 255, 255));
         lblLoginUser.setText("Username");
 
-        txtLoginPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        txtLoginPass.setBackground(new java.awt.Color(153, 102, 255));
+        txtLoginPass.setFont(new java.awt.Font("Sinhala MN", 1, 18)); // NOI18N
+        txtLoginPass.setForeground(new java.awt.Color(255, 255, 255));
+        txtLoginPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtLoginPass.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtLoginPass.setCaretColor(new java.awt.Color(255, 255, 255));
         txtLoginPass.setOpaque(false);
         txtLoginPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,8 +121,8 @@ public class loginScreen extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Sinhala MN", 1, 30)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel1.setFont(new java.awt.Font("Sinhala MN", 1, 40)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Sign In");
 
         btnLoginLogin.setBackground(new java.awt.Color(255, 255, 255));
@@ -151,11 +164,8 @@ public class loginScreen extends javax.swing.JFrame {
         logingLayout.setHorizontalGroup(
             logingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(logingLayout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(logingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logingLayout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logingLayout.createSequentialGroup()
                         .addGroup(logingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(logingLayout.createSequentialGroup()
@@ -163,31 +173,41 @@ public class loginScreen extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnLoginExit))
                             .addGroup(logingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtLoginUser, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lblLoginUser)
                                 .addComponent(ldbLoginPass)
                                 .addComponent(txtLoginPass, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(45, 45, 45))))
+                        .addGap(45, 45, 45))
+                    .addGroup(logingLayout.createSequentialGroup()
+                        .addComponent(txtLoginUser, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+            .addGroup(logingLayout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        logingLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtLoginPass, txtLoginUser});
+
         logingLayout.setVerticalGroup(
             logingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(logingLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(32, 32, 32)
                 .addComponent(lblLoginUser)
-                .addGap(18, 18, 18)
-                .addComponent(txtLoginUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtLoginUser, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ldbLoginPass)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtLoginPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addGroup(logingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLoginLogin)
                     .addComponent(btnLoginExit))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
+
+        logingLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtLoginPass, txtLoginUser});
 
         signin.add(loging, "card2");
 
@@ -210,7 +230,7 @@ public class loginScreen extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(loadingLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
                 .addContainerGap())
         );
         loadingLayout.setVerticalGroup(
@@ -220,7 +240,7 @@ public class loginScreen extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(jLabel3)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         signin.add(loading, "card3");
@@ -255,7 +275,7 @@ public class loginScreen extends javax.swing.JFrame {
               if(btnLoginLogin.isEnabled()){
             try {
                 if(User.checkPass(txtLoginUser.getText().trim(), txtLoginPass.getText().trim())){
-                    new JFMain().setVisible(true);
+                    new JFrameMain().setVisible(true);
                 }else {
                     loging.setVisible(true);
                     loading.setVisible(false);
