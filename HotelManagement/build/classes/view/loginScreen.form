@@ -144,7 +144,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" pref="118" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" pref="144" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -166,7 +166,7 @@
                               <Component id="btnLoginLogin" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnLoginExit" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="53" max="32767" attributes="0"/>
+                          <EmptySpace pref="50" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

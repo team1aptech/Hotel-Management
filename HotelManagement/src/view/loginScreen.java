@@ -5,8 +5,14 @@
  */
 package view;
 
+import hotelmanagementinterfacermi.MySignIn;
 import java.awt.Color;
 import static java.lang.Thread.sleep;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.TimerTask;
 import java.util.logging.Level;
@@ -182,7 +188,7 @@ public class loginScreen extends javax.swing.JFrame {
                         .addContainerGap())))
             .addGroup(logingLayout.createSequentialGroup()
                 .addGap(87, 87, 87)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -204,7 +210,7 @@ public class loginScreen extends javax.swing.JFrame {
                 .addGroup(logingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLoginLogin)
                     .addComponent(btnLoginExit))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         logingLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtLoginPass, txtLoginUser});
@@ -273,20 +279,43 @@ public class loginScreen extends javax.swing.JFrame {
                 loading.setVisible(false);
                 loging.setVisible(true);
               if(btnLoginLogin.isEnabled()){
-            try {
-                if(User.checkPass(txtLoginUser.getText().trim(), txtLoginPass.getText().trim())){
-                    new JFrameMain().setVisible(true);
-                }else {
-                    loging.setVisible(true);
-                    loading.setVisible(false);
+           Remote lookup = null;
+
+                    try {
+                        lookup = Naming.lookup("rmi://localhost:1099/signin");
+                    } catch (NotBoundException ex) {
+                        Logger.getLogger(loginScreen.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (MalformedURLException ex) {
+                        Logger.getLogger(loginScreen.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (RemoteException ex) {
+                        Logger.getLogger(loginScreen.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    MySignIn myremote = (MySignIn) lookup;
+
+                    try {
+                        if (myremote.checkPass(txtLoginUser.getText().trim(), txtLoginPass.getText().trim())) {
+
+                            new JFrameMain().setVisible(true);
+
+                        } else {
+                            loging.setVisible(true);
+                            loading.setVisible(false);
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(loginScreen.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(loginScreen.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (RemoteException ex) {
+                        Logger.getLogger(loginScreen.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
                 }
-            } catch (SQLException | ClassNotFoundException ex) {
-                Logger.getLogger(loginScreen.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
 
             }
+
         }, 1000 * 5);
+
 
     }//GEN-LAST:event_btnLoginLoginActionPerformed
 

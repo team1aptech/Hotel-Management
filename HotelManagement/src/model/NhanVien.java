@@ -5,7 +5,7 @@
  */
 package model;
 
-import connection.controllerConnectDB;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -94,19 +94,19 @@ public class NhanVien {
     public void setSDT(int SDT) {
         this.SDT = SDT;
     }
-    public static Vector<String> getAllID() throws ClassNotFoundException, SQLException {
-        Connection connection = controllerConnectDB.connecDB();
-        
-        String request = "Select MANHANVIEN from NHANVIEN";
-        Statement stmt = connection.createStatement();
-        
-        ResultSet rs = stmt.executeQuery(request);
-        Vector<String> list = new Vector<>();
-        
-        while (rs.next()) {
-            list.add(rs.getString("MANHANVIEN"));
-        }
-        
-        return list;
-    }
+//    public static Vector<String> getAllID() throws ClassNotFoundException, SQLException {
+//        Connection connection = controllerConnectDB.connecDB();
+//        
+//        String request = "Select MANHANVIEN from NHANVIEN";
+//        Statement stmt = connection.createStatement();
+//        
+//        ResultSet rs = stmt.executeQuery(request);
+//        Vector<String> list = new Vector<>();
+//        
+//        while (rs.next()) {
+//            list.add(rs.getString("MANHANVIEN"));
+//        }
+//        
+//        return list;
+//    }
 }

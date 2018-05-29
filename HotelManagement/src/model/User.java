@@ -5,7 +5,7 @@
  */
 package model;
 
-import connection.controllerConnectDB;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -56,39 +56,39 @@ public class User {
     }
 
     
-    public static boolean checkPass(String Username, String Pass) throws SQLException, ClassNotFoundException{
-        Connection connection = controllerConnectDB.connecDB();
-        String request = "Select * from Users where Username = ? and Pass = ?";
-        PreparedStatement stmt = connection.prepareStatement(request);
-        stmt.setString(1, Username);
-        stmt.setString(2, Pass);
-        ResultSet rs = stmt.executeQuery();
-        boolean flag =false;
-        if (rs.next()) flag = true;
-        rs.close();
-        stmt.close();
-        connection.close();
-        return flag;
-    }
-    public static Vector getAllUsers() throws SQLException, ClassNotFoundException {
-        Connection connection = controllerConnectDB.connecDB();
+//    public static boolean checkPass(String Username, String Pass) throws SQLException, ClassNotFoundException{
+//        Connection connection = controllerConnectDB.connecDB();
+//        String request = "Select * from Users where Username = ? and Pass = ?";
+//        PreparedStatement stmt = connection.prepareStatement(request);
+//        stmt.setString(1, Username);
+//        stmt.setString(2, Pass);
+//        ResultSet rs = stmt.executeQuery();
+//        boolean flag =false;
+//        if (rs.next()) flag = true;
+//        rs.close();
+//        stmt.close();
+//        connection.close();
+//        return flag;
+//    }
+//    public static Vector getAllUsers() throws SQLException, ClassNotFoundException {
+//        Connection connection = controllerConnectDB.connecDB();
+//        
+//        String request = "Select MANHANVIEN, Username, Pass from Users";
+//        Statement stmt = connection.createStatement();
+//        ResultSet rs = stmt.executeQuery(request);
+//        
+//        Vector list = new Vector();
+//        while (rs.next()) {
+//            Vector<String> temp = new Vector<>();
+//            
+//            temp.add(rs.getString("MANHANVIEN"));
+//            temp.add(rs.getString("Username"));
+//            temp.add(rs.getString("Pass"));
+//            
+//            list.add(temp);
+//        }
         
-        String request = "Select MANHANVIEN, Username, Pass from Users";
-        Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery(request);
-        
-        Vector list = new Vector();
-        while (rs.next()) {
-            Vector<String> temp = new Vector<>();
-            
-            temp.add(rs.getString("MANHANVIEN"));
-            temp.add(rs.getString("Username"));
-            temp.add(rs.getString("Pass"));
-            
-            list.add(temp);
-        }
-        
-        return list;
-    }
+//        return list;
+//    }
     
 }
