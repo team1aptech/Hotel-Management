@@ -283,11 +283,7 @@ public class loginScreen extends javax.swing.JFrame {
 
                     try {
                         lookup = Naming.lookup("rmi://localhost:1099/signin");
-                    } catch (NotBoundException ex) {
-                        Logger.getLogger(loginScreen.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (MalformedURLException ex) {
-                        Logger.getLogger(loginScreen.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (RemoteException ex) {
+                    } catch (NotBoundException | MalformedURLException | RemoteException ex) {
                         Logger.getLogger(loginScreen.class.getName()).log(Level.SEVERE, null, ex);
                     }
 

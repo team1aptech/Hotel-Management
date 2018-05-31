@@ -30,9 +30,7 @@ public class HotelManagenmentSeverRMI {
             Naming.rebind("rmi://localhost/signin", signin);
             Naming.rebind("rmi://localhost/room", room);
             System.out.println("Dang cho client gọi ham dang nhap:");
-        } catch (RemoteException ex) {
-            java.util.logging.Logger.getLogger(HotelManagenmentSeverRMI.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (MalformedURLException ex) {
+        } catch (RemoteException | MalformedURLException ex) {
             java.util.logging.Logger.getLogger(HotelManagenmentSeverRMI.class.getName()).log(Level.SEVERE, null, ex);
         }
         

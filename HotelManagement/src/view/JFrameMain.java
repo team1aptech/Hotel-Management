@@ -91,7 +91,6 @@ public class JFrameMain extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jpnMain = new javax.swing.JPanel();
         TopMenuPanel = new keeptoo.KGradientPanel();
@@ -145,21 +144,6 @@ public class JFrameMain extends javax.swing.JFrame {
         jFormattedTextField18 = new javax.swing.JFormattedTextField();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        Cash1 = new javax.swing.JPanel();
-        jFormattedTextField19 = new javax.swing.JFormattedTextField();
-        jLabel141 = new javax.swing.JLabel();
-        jLabel142 = new javax.swing.JLabel();
-        jFormattedTextField20 = new javax.swing.JFormattedTextField();
-        jLabel143 = new javax.swing.JLabel();
-        jFormattedTextField21 = new javax.swing.JFormattedTextField();
-        jLabel144 = new javax.swing.JLabel();
-        jFormattedTextField22 = new javax.swing.JFormattedTextField();
-        jLabel145 = new javax.swing.JLabel();
-        jFormattedTextField23 = new javax.swing.JFormattedTextField();
-        jLabel146 = new javax.swing.JLabel();
-        jFormattedTextField24 = new javax.swing.JFormattedTextField();
-        jLabel147 = new javax.swing.JLabel();
-        jLabel148 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -212,11 +196,25 @@ public class JFrameMain extends javax.swing.JFrame {
         jLabel96 = new javax.swing.JLabel();
         jPanel76 = new javax.swing.JPanel();
         jLabel97 = new javax.swing.JLabel();
+        Cash1 = new javax.swing.JPanel();
+        jFormattedTextField19 = new javax.swing.JFormattedTextField();
+        jLabel141 = new javax.swing.JLabel();
+        jLabel142 = new javax.swing.JLabel();
+        jFormattedTextField20 = new javax.swing.JFormattedTextField();
+        jLabel143 = new javax.swing.JLabel();
+        jFormattedTextField21 = new javax.swing.JFormattedTextField();
+        jLabel144 = new javax.swing.JLabel();
+        jFormattedTextField22 = new javax.swing.JFormattedTextField();
+        jLabel145 = new javax.swing.JLabel();
+        jFormattedTextField23 = new javax.swing.JFormattedTextField();
+        jLabel146 = new javax.swing.JLabel();
+        jFormattedTextField24 = new javax.swing.JFormattedTextField();
+        jLabel147 = new javax.swing.JLabel();
+        jLabel148 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Aptech Hotel Management");
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1366, 768));
         setResizable(false);
 
         jpnMain.setBackground(new java.awt.Color(255, 255, 255));
@@ -537,7 +535,7 @@ public class JFrameMain extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(448, Short.MAX_VALUE))
+                .addContainerGap(316, Short.MAX_VALUE))
         );
 
         LeftMenuPanel.setLayer(kGradientPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -546,16 +544,16 @@ public class JFrameMain extends javax.swing.JFrame {
         LeftMenuPanel.setLayout(LeftMenuPanelLayout);
         LeftMenuPanelLayout.setHorizontalGroup(
             LeftMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LeftMenuPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LeftMenuPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(kGradientPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
         LeftMenuPanelLayout.setVerticalGroup(
             LeftMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LeftMenuPanelLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
                 .addComponent(kGradientPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         containPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -567,7 +565,7 @@ public class JFrameMain extends javax.swing.JFrame {
         CustomerID1.setBackground(new java.awt.Color(0, 204, 204));
         CustomerID1.setPreferredSize(new java.awt.Dimension(626, 890));
 
-        jLabel130.setFont(new java.awt.Font("Sinhala MN", 1, 36)); // NOI18N
+        jLabel130.setFont(new java.awt.Font("Sinhala MN", 1, 24)); // NOI18N
         jLabel130.setForeground(new java.awt.Color(153, 0, 255));
         jLabel130.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel130.setText("THÔNG TIN KHÁCH HÀNG");
@@ -595,6 +593,11 @@ public class JFrameMain extends javax.swing.JFrame {
         jFormattedTextField13.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("0"))));
         jFormattedTextField13.setCaretColor(new java.awt.Color(255, 255, 255));
         jFormattedTextField13.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jFormattedTextField13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextField13ActionPerformed(evt);
+            }
+        });
 
         jLabel133.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel133.setForeground(new java.awt.Color(255, 255, 255));
@@ -700,7 +703,7 @@ public class JFrameMain extends javax.swing.JFrame {
                     .addComponent(jFormattedTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(SignUpCustomer1Layout.createSequentialGroup()
                         .addComponent(jLabel134)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel131)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -709,7 +712,7 @@ public class JFrameMain extends javax.swing.JFrame {
                     .addComponent(jLabel133)
                     .addComponent(jFormattedTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel139))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(SignUpCustomer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(SignUpCustomer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SignUpCustomer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -771,17 +774,15 @@ public class JFrameMain extends javax.swing.JFrame {
                         .addComponent(jLabel132)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jFormattedTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel133)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jFormattedTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(SignUpCustomer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(SignUpCustomer1Layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(jLabel134)))))
-                .addGap(11, 11, 11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(SignUpCustomer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel134)
+                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(SignUpCustomer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel139)
                     .addComponent(jLabel140))
@@ -792,122 +793,15 @@ public class JFrameMain extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        Cash1.setBackground(new java.awt.Color(0, 204, 204));
-        Cash1.setLayout(null);
-
-        jFormattedTextField19.setBackground(new java.awt.Color(0, 204, 204));
-        jFormattedTextField19.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        jFormattedTextField19.setForeground(new java.awt.Color(255, 255, 255));
-        jFormattedTextField19.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("0"))));
-        jFormattedTextField19.setCaretColor(new java.awt.Color(255, 255, 255));
-        jFormattedTextField19.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Cash1.add(jFormattedTextField19);
-        jFormattedTextField19.setBounds(200, 40, 224, 24);
-
-        jLabel141.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel141.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel141.setText("Đặt Trước");
-        Cash1.add(jLabel141);
-        jLabel141.setBounds(200, 20, 71, 19);
-
-        jLabel142.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel142.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel142.setText("Tiền Phòng");
-        Cash1.add(jLabel142);
-        jLabel142.setBounds(200, 70, 75, 19);
-
-        jFormattedTextField20.setBackground(new java.awt.Color(0, 204, 204));
-        jFormattedTextField20.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        jFormattedTextField20.setForeground(new java.awt.Color(255, 255, 255));
-        jFormattedTextField20.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("0"))));
-        jFormattedTextField20.setCaretColor(new java.awt.Color(255, 255, 255));
-        jFormattedTextField20.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Cash1.add(jFormattedTextField20);
-        jFormattedTextField20.setBounds(200, 90, 224, 24);
-
-        jLabel143.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel143.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel143.setText("Phí Dịch Vụ");
-        Cash1.add(jLabel143);
-        jLabel143.setBounds(200, 120, 79, 19);
-
-        jFormattedTextField21.setBackground(new java.awt.Color(0, 204, 204));
-        jFormattedTextField21.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        jFormattedTextField21.setForeground(new java.awt.Color(255, 255, 255));
-        jFormattedTextField21.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("0"))));
-        jFormattedTextField21.setCaretColor(new java.awt.Color(255, 255, 255));
-        jFormattedTextField21.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Cash1.add(jFormattedTextField21);
-        jFormattedTextField21.setBounds(200, 150, 224, 24);
-
-        jLabel144.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel144.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel144.setText("Giảm Giá Phòng");
-        Cash1.add(jLabel144);
-        jLabel144.setBounds(200, 180, 109, 19);
-
-        jFormattedTextField22.setBackground(new java.awt.Color(0, 204, 204));
-        jFormattedTextField22.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        jFormattedTextField22.setForeground(new java.awt.Color(255, 255, 255));
-        jFormattedTextField22.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("0"))));
-        jFormattedTextField22.setCaretColor(new java.awt.Color(255, 255, 255));
-        jFormattedTextField22.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Cash1.add(jFormattedTextField22);
-        jFormattedTextField22.setBounds(200, 200, 224, 24);
-
-        jLabel145.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel145.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel145.setText("Giảm Giá Khác");
-        Cash1.add(jLabel145);
-        jLabel145.setBounds(200, 230, 103, 19);
-
-        jFormattedTextField23.setBackground(new java.awt.Color(0, 204, 204));
-        jFormattedTextField23.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        jFormattedTextField23.setForeground(new java.awt.Color(255, 255, 255));
-        jFormattedTextField23.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("0"))));
-        jFormattedTextField23.setCaretColor(new java.awt.Color(255, 255, 255));
-        jFormattedTextField23.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Cash1.add(jFormattedTextField23);
-        jFormattedTextField23.setBounds(200, 260, 224, 24);
-
-        jLabel146.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel146.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel146.setText("Tổng Thanh Toán");
-        Cash1.add(jLabel146);
-        jLabel146.setBounds(200, 290, 118, 19);
-
-        jFormattedTextField24.setBackground(new java.awt.Color(0, 204, 204));
-        jFormattedTextField24.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        jFormattedTextField24.setForeground(new java.awt.Color(255, 255, 255));
-        jFormattedTextField24.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("0"))));
-        jFormattedTextField24.setCaretColor(new java.awt.Color(255, 255, 255));
-        jFormattedTextField24.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        Cash1.add(jFormattedTextField24);
-        jFormattedTextField24.setBounds(200, 310, 224, 24);
-
-        jLabel147.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images2/icons8-purchase-order-96.png"))); // NOI18N
-        Cash1.add(jLabel147);
-        jLabel147.setBounds(50, 10, 96, 96);
-
-        jLabel148.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images2/icons8-checkout-96.png"))); // NOI18N
-        Cash1.add(jLabel148);
-        jLabel148.setBounds(440, 10, 96, 96);
-
         javax.swing.GroupLayout CustomerID1Layout = new javax.swing.GroupLayout(CustomerID1);
         CustomerID1.setLayout(CustomerID1Layout);
         CustomerID1Layout.setHorizontalGroup(
             CustomerID1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CustomerID1Layout.createSequentialGroup()
-                .addGroup(CustomerID1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CustomerID1Layout.createSequentialGroup()
-                        .addGroup(CustomerID1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(SignUpCustomer1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel130, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CustomerID1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(Cash1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGroup(CustomerID1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(SignUpCustomer1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel130, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         CustomerID1Layout.setVerticalGroup(
             CustomerID1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -916,9 +810,7 @@ public class JFrameMain extends javax.swing.JFrame {
                 .addComponent(jLabel130)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SignUpCustomer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(Cash1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Phongtrong.png"))); // NOI18N
@@ -1536,29 +1428,127 @@ public class JFrameMain extends javax.swing.JFrame {
                 .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
+                .addContainerGap(368, Short.MAX_VALUE))
             .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel14Layout.createSequentialGroup()
                     .addGap(149, 149, 149)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(1278, Short.MAX_VALUE)))
+                    .addContainerGap(605, Short.MAX_VALUE)))
         );
+
+        Cash1.setBackground(new java.awt.Color(0, 204, 204));
+        Cash1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jFormattedTextField19.setBackground(new java.awt.Color(0, 204, 204));
+        jFormattedTextField19.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jFormattedTextField19.setForeground(new java.awt.Color(255, 255, 255));
+        jFormattedTextField19.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("0"))));
+        jFormattedTextField19.setCaretColor(new java.awt.Color(255, 255, 255));
+        jFormattedTextField19.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Cash1.add(jFormattedTextField19, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 224, -1));
+
+        jLabel141.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel141.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel141.setText("Đặt Trước");
+        Cash1.add(jLabel141, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, -1, -1));
+
+        jLabel142.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel142.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel142.setText("Tiền Phòng");
+        Cash1.add(jLabel142, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, -1, -1));
+
+        jFormattedTextField20.setBackground(new java.awt.Color(0, 204, 204));
+        jFormattedTextField20.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jFormattedTextField20.setForeground(new java.awt.Color(255, 255, 255));
+        jFormattedTextField20.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("0"))));
+        jFormattedTextField20.setCaretColor(new java.awt.Color(255, 255, 255));
+        jFormattedTextField20.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Cash1.add(jFormattedTextField20, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 224, -1));
+
+        jLabel143.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel143.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel143.setText("Phí Dịch Vụ");
+        Cash1.add(jLabel143, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, -1, -1));
+
+        jFormattedTextField21.setBackground(new java.awt.Color(0, 204, 204));
+        jFormattedTextField21.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jFormattedTextField21.setForeground(new java.awt.Color(255, 255, 255));
+        jFormattedTextField21.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("0"))));
+        jFormattedTextField21.setCaretColor(new java.awt.Color(255, 255, 255));
+        jFormattedTextField21.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Cash1.add(jFormattedTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 224, -1));
+
+        jLabel144.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel144.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel144.setText("Giảm Giá Phòng");
+        Cash1.add(jLabel144, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, -1, -1));
+
+        jFormattedTextField22.setBackground(new java.awt.Color(0, 204, 204));
+        jFormattedTextField22.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jFormattedTextField22.setForeground(new java.awt.Color(255, 255, 255));
+        jFormattedTextField22.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("0"))));
+        jFormattedTextField22.setCaretColor(new java.awt.Color(255, 255, 255));
+        jFormattedTextField22.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Cash1.add(jFormattedTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 224, -1));
+
+        jLabel145.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel145.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel145.setText("Giảm Giá Khác");
+        Cash1.add(jLabel145, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
+
+        jFormattedTextField23.setBackground(new java.awt.Color(0, 204, 204));
+        jFormattedTextField23.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jFormattedTextField23.setForeground(new java.awt.Color(255, 255, 255));
+        jFormattedTextField23.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("0"))));
+        jFormattedTextField23.setCaretColor(new java.awt.Color(255, 255, 255));
+        jFormattedTextField23.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Cash1.add(jFormattedTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 224, -1));
+
+        jLabel146.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel146.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel146.setText("Tổng Thanh Toán");
+        Cash1.add(jLabel146, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, -1, -1));
+
+        jFormattedTextField24.setBackground(new java.awt.Color(0, 204, 204));
+        jFormattedTextField24.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        jFormattedTextField24.setForeground(new java.awt.Color(255, 255, 255));
+        jFormattedTextField24.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("0"))));
+        jFormattedTextField24.setCaretColor(new java.awt.Color(255, 255, 255));
+        jFormattedTextField24.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Cash1.add(jFormattedTextField24, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 224, -1));
+
+        jLabel147.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images2/icons8-purchase-order-96.png"))); // NOI18N
+        Cash1.add(jLabel147, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
+
+        jLabel148.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images2/icons8-checkout-96.png"))); // NOI18N
+        Cash1.add(jLabel148, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, -1, -1));
 
         javax.swing.GroupLayout roomManagementLayout = new javax.swing.GroupLayout(roomManagement);
         roomManagement.setLayout(roomManagementLayout);
         roomManagementLayout.setHorizontalGroup(
             roomManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roomManagementLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CustomerID1, javax.swing.GroupLayout.PREFERRED_SIZE, 582, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(roomManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CustomerID1, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
+                    .addGroup(roomManagementLayout.createSequentialGroup()
+                        .addComponent(Cash1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         roomManagementLayout.setVerticalGroup(
             roomManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roomManagementLayout.createSequentialGroup()
-                .addComponent(CustomerID1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(799, Short.MAX_VALUE))
-            .addComponent(jPanel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(roomManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(roomManagementLayout.createSequentialGroup()
+                        .addComponent(CustomerID1, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Cash1, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(roomManagementLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(653, Short.MAX_VALUE))
         );
 
         containPanel.add(roomManagement, "roomManagement");
@@ -1580,7 +1570,7 @@ public class JFrameMain extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jpnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(LeftMenuPanel)
-                    .addComponent(containPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1519, Short.MAX_VALUE))
+                    .addComponent(containPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1530, Short.MAX_VALUE))
                 .addGap(254, 254, 254))
         );
 
@@ -1592,7 +1582,9 @@ public class JFrameMain extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpnMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jpnMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         pack();
@@ -1714,6 +1706,10 @@ public class JFrameMain extends javax.swing.JFrame {
         CardLayout layout = (CardLayout) containPanel.getLayout();
         layout.show(containPanel, "setting");
     }//GEN-LAST:event_jPanel5MouseReleased
+
+    private void jFormattedTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextField13ActionPerformed
 
 //    public void setColor(JPanel panel) {
 //        panel.setForeground(new java.awt.Color(151, 2, 254));
