@@ -32,9 +32,9 @@ public class loginScreen extends javax.swing.JFrame {
 
     public loginScreen() {
         initComponents();
-        loging.setBackground(javax.swing.UIManager.getDefaults().getColor("TextArea.disabledBackground"));
-        txtLoginUser.setBackground(javax.swing.UIManager.getDefaults().getColor("TextArea.disabledBackground"));
-        txtLoginPass.setBackground(javax.swing.UIManager.getDefaults().getColor("TextArea.disabledBackground"));
+//        loging.setBackground(javax.swing.UIManager.getDefaults().getColor("TextArea.disabledBackground"));
+//        txtLoginUser.setBackground(javax.swing.UIManager.getDefaults().getColor("TextArea.disabledBackground"));
+//        txtLoginPass.setBackground(javax.swing.UIManager.getDefaults().getColor("TextArea.disabledBackground"));
         check.start();
         
         
@@ -114,7 +114,7 @@ public class loginScreen extends javax.swing.JFrame {
         lblLoginUser.setForeground(new java.awt.Color(255, 255, 255));
         lblLoginUser.setText("Username");
 
-        txtLoginPass.setBackground(new java.awt.Color(153, 102, 255));
+        txtLoginPass.setBackground(new java.awt.Color(36, 155, 192));
         txtLoginPass.setFont(new java.awt.Font("Sinhala MN", 1, 18)); // NOI18N
         txtLoginPass.setForeground(new java.awt.Color(255, 255, 255));
         txtLoginPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
