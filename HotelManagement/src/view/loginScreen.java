@@ -36,8 +36,6 @@ public class loginScreen extends javax.swing.JFrame {
 //        txtLoginUser.setBackground(javax.swing.UIManager.getDefaults().getColor("TextArea.disabledBackground"));
 //        txtLoginPass.setBackground(javax.swing.UIManager.getDefaults().getColor("TextArea.disabledBackground"));
         check.start();
-        
-        
 
     }
 
@@ -278,8 +276,8 @@ public class loginScreen extends javax.swing.JFrame {
             public void run() {
                 loading.setVisible(false);
                 loging.setVisible(true);
-              if(btnLoginLogin.isEnabled()){
-           Remote lookup = null;
+                if (btnLoginLogin.isEnabled()) {
+                    Remote lookup = null;
 
                     try {
                         lookup = Naming.lookup("rmi://localhost:1099/signin");
@@ -293,7 +291,7 @@ public class loginScreen extends javax.swing.JFrame {
                         if (myremote.checkPass(txtLoginUser.getText().trim(), txtLoginPass.getText().trim())) {
 
                             new JFrameMain().setVisible(true);
-
+                            dispose();
                         } else {
                             loging.setVisible(true);
                             loading.setVisible(false);
@@ -316,7 +314,7 @@ public class loginScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginLoginActionPerformed
 
     private void btnLoginLoginMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginLoginMouseReleased
-       
+
     }//GEN-LAST:event_btnLoginLoginMouseReleased
 
     private void btnLoginExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginExitActionPerformed
