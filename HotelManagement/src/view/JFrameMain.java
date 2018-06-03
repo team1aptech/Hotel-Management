@@ -80,6 +80,9 @@ public class JFrameMain extends javax.swing.JFrame {
             Logger.getLogger(JFMain.class.getName()).log(Level.SEVERE, null, ex);
         } catch (RemoteException ex) {
             Logger.getLogger(JFMain.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NullPointerException ex) {
+           
+
         }
     }
 
