@@ -1,10 +1,10 @@
 ﻿use master
 go
-create database QLKHACHSAN
+create database QLKHACHSANNEW
 go
-use QLkhachsan
+use QLKHACHSANNEW
 go
-
+drop database QLKHACHSANNEW
 create table chucvu(
 MACHUCVU varchar (5) primary key,
 TENCHUCVU nvarchar (30),
@@ -41,15 +41,33 @@ constraint fk_nhanvien_chucvu foreign key(MACHUCVU) references chucvu(MACHUCVU)
 
 
 create table phong(
-MAPHONG varchar(6) primary key,
+SOPHONG varchar(3) primary key,
+MATANG int ,
 TINHTRANG nvarchar(15),
-MALOAIPHONG varchar(2),
+--MALOAIPHONG varchar(2),
 GIAPHONGMOTGIO int,
 GIAPHONGMOTNGAY int,
 GIAPHONGQUADEM int,
 
-constraint fk_phong_loaiphong foreign key(MALOAIPHONG) references loaiphong(MALOAIPHONG)
+
+--constraint fk_phong_loaiphong foreign key(MALOAIPHONG) references loaiphong(MALOAIPHONG)
 )
+
+insert into phong values ('201',2,N'ĐÃ ĐẶT',80000,300000,400000)
+insert into phong values ('202',2,N'TRỐNG',90000,400000,500000)
+insert into phong values ('203',2,N'BẨN',80000,300000,400000)
+insert into phong values ('204',2,N'CÓ KHÁCH',100000,500000,900000)
+insert into phong values ('205',2,N'ĐÃ ĐẶT',80000,300000,400000)
+insert into phong values ('206',2,N'TRỐNG',90000,400000,500000)
+insert into phong values ('301',3,N'CÓ KHÁCH',80000,300000,400000)
+insert into phong values ('302',3,N'ĐÃ ĐẶT',80000,300000,400000)
+insert into phong values ('303',3,N'TRỐNG',80000,300000,400000)
+insert into phong values ('304',3,N'ĐÃ ĐẶT',80000,300000,400000)
+insert into phong values ('305',3,N'TRỐNG',80000,300000,400000)
+insert into phong values ('401',4,N'ĐÃ ĐẶT',80000,300000,400000)
+insert into phong values ('402',4,N'BẨN',80000,300000,400000)
+insert into phong values ('403',4,N'ĐÃ ĐẶT',80000,300000,400000)
+
 create table hoadon(
 MAHOADON varchar(5) primary key,
 /* Phieu Dang Ky*/
@@ -89,6 +107,16 @@ create table Users (
 	Username varchar(20),
 	Pass varchar(30)
 	primary key (MANHANVIEN, Username))
+create table Tang (
+	MaTang int ,
+	TenTang varchar(20),
+	primary key(MaTang))
+
+
+	 insert into Tang values (1,N'Tang 1')
+	 insert into Tang values (2,N'Tang 2')
+	 insert into Tang values (3,N'Tang 3')
+	 insert into Tang values (4,N'Tang 3')
 
 --CHUC VU
 insert into chucvu values ('QL',N'QUANLY')
@@ -127,14 +155,7 @@ insert into loaiphong values ('05',N'THƯỜNG',N'MÁY LẠNH,TIVI,TỦ ĐỒ,B�
 insert into loaiphong values ('06',N'THƯỜNG',N'MÁY LẠNH,TIVI,TỦ ĐỒ,BÀN,TỦ LẠNH,GIƯỜNG NGỦ')
 insert into loaiphong values ('07',N'THƯỜNG',N'MÁY LẠNH,TIVI,TỦ ĐỒ,BÀN,TỦ LẠNH,GIƯỜNG NGỦ')
 
---NHAP DANH SACH PHONG
-insert into phong values ('SS001',N'TRỐNG','01','150000','400000','300000','VND')
-insert into phong values ('SS002',N'ĐÃ ĐẶT','02','150000','400000','300000','VND')
-insert into phong values ('BT003',N'ĐANG SỮ DỤNG','03','100000','300000','200000','VND')
-insert into phong values ('SS004',N'ĐANG SỮ DỤNG','04','150000','400000','300000','VND')
-insert into phong values ('BT005',N'TRỐNG','05','100000','300000','200000','VND')
-insert into phong values ('BT006',N'ĐANG SỬ DỤNG','06','100000','300000','200000','VND')
-insert into phong values ('BT007',N'ĐÃ ĐẶT','07','100000','300000','200000','VND')
+
 
 --NHAP DANH SACH KHACH HANG
 insert into khachhang values ('KH001',N'TẠ THỊ THANH TÂM',N'THỪA THIÊN HUẾ',1,'485727573','0913967465',N'VIETNAM')
@@ -164,3 +185,6 @@ insert into  phieudichvu values ('PDV06','PDK06',N'đồ ăn',N'cơm sườn','5
 insert into  phieudichvu values ('PDV07','PDK07',N'giặt ủi',N'giặt ủi nhanh','100000')
 
 
+select GIAPHONGMOTGIO,GIAPHONGMOTNGAY,GIAPHONGQUADEM from phong where MAPHONG = '202'
+select * from phong
+select * from phong join Tang where MaTang

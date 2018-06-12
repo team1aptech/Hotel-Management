@@ -13,34 +13,42 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
  * @author Trung
  */
 public class Room extends UnicastRemoteObject implements CheckRoom {
-    public Room() throws RemoteException{
+
+    public Room() throws RemoteException {
         super();
     }
 
     @Override
-    public String checkRoom(String NameRoom) throws SQLException, ClassNotFoundException, RemoteException {
+    public ArrayList checkRoom(int Tang, ArrayList Phong) throws SQLException, ClassNotFoundException, RemoteException {
+//        ArrayList Phong = new ArrayList();
         Connection connection = controllerConnectDB.connecDB();
-        String request = "Select TINHTRANG from phong where MAPHONG = ?";
+        String request = "select MAPHONG,TINHTRANG from phong inner join Tang on phong.MATANG = Tang.MATANG where Tang.MATANG = ?";
         PreparedStatement stmt = connection.prepareStatement(request);
-        stmt.setString(1, NameRoom);
+        stmt.setInt(1, Tang);
         ResultSet rs = stmt.executeQuery();
-        String str = null ;
-        if (rs.next()) {
-            str = rs.getString("TINHTRANG");
-            rs.close();
-            stmt.close();
-            connection.close();
-            
+
+//        
+        while (rs.next()) {
+//            str = rs.getString("TINHTRANG");
+            String[] array = {rs.getString("MAPHONG"), rs.getString("TINHTRANG")};
+
+            Phong.add(array);
+//           
         }
-        return str;
+        System.out.println(Phong.size());
+        rs.close();
+        stmt.close();
+        connection.close();
+//        
+        return Phong;
+
     }
 
-   
-    
 }

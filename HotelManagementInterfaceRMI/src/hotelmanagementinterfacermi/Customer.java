@@ -8,12 +8,13 @@ package hotelmanagementinterfacermi;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.Vector;
 
 /**
  *
  * @author Trung
  */
-public interface CheckRoom extends Remote{
-     public ArrayList checkRoom(int Tang,ArrayList Phong) throws SQLException, ClassNotFoundException, RemoteException;
+public interface Customer extends Remote{
+    public Vector getTenNhanVien(Vector emp)throws SQLException,ClassNotFoundException,RemoteException;
+    public Vector getGiaPhong(String MaPhong)throws SQLException,ClassNotFoundException,RemoteException;
 }

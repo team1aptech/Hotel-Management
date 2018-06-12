@@ -20,7 +20,7 @@ public class controllerConnectDB {
     public static final String DB_URL = "jdbc:sqlserver://localhost;";
     public static final String DATABASENAME = "databaseName=QLKHACHSAN;";
     public static final String USER = "user=sa;";
-    public static final String PASS = "password=123456a@";
+    public static final String PASS = "password=123";
     
     public static Connection connecDB() throws SQLException, ClassNotFoundException{
         Class.forName(JDBC_DRIVER);
@@ -29,7 +29,7 @@ public class controllerConnectDB {
         return connection;
     }
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         connecDB();
     }
     

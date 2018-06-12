@@ -26,7 +26,7 @@ public class SignIn extends UnicastRemoteObject implements MySignIn{
 
     @Override
     public boolean checkPass(String Username, String Pass) throws SQLException, ClassNotFoundException, RemoteException {
-        System.out.println("dang SignIn");
+        
         System.out.println("dang ket noi database");
         Connection connection = controllerConnectDB.connecDB();
         String request = "Select * from Users where Username = ? and Pass = ?";
