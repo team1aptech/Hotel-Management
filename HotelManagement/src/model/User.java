@@ -29,6 +29,7 @@ public class User {
         this.MANHANVIEN = MANHANVIEN;
         this.Username = Username;
         this.Pass = Pass;
+        
     }
 
     public String getMANHANVIEN() {

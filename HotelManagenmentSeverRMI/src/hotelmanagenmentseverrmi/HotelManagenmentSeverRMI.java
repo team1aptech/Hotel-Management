@@ -25,8 +25,10 @@ public class HotelManagenmentSeverRMI {
             LocateRegistry.createRegistry(1099);
             GetAllUsers users = new GetAllUsers();
             GetAllEmployee emp = new GetAllEmployee();
+            GetOnlyID empID = new GetOnlyID();
             Naming.rebind("rmi://localhost/emp", emp);
             Naming.rebind("rmi://localhost/users", users);
+            Naming.rebind("rmi://localhost/empID", empID);
             Naming.rebind("rmi://localhost/signin", signin);
             Naming.rebind("rmi://localhost/room", room);
             Naming.rebind("rmi://localhost/customer", customer);

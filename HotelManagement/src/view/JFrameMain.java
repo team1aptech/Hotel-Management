@@ -7,12 +7,15 @@ package view;
 
 import hotelmanagementinterfacermi.CheckGetAllEmpoyee;
 import hotelmanagementinterfacermi.CheckGetAllUser;
+import hotelmanagementinterfacermi.CheckGetOnlyID;
 import hotelmanagementinterfacermi.CheckRoom;
 import hotelmanagementinterfacermi.Customer;
+import hotelmanagementinterfacermi.MySignIn;
 
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.GraphicsEnvironment;
+import static java.lang.Thread.sleep;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import static java.rmi.Naming.lookup;
@@ -31,7 +34,6 @@ import javax.swing.table.DefaultTableModel;
 import static jdk.nashorn.internal.runtime.Undefined.lookup;
 import model.Phong;
 
-
 /**
  *
  * @author uphoto
@@ -41,7 +43,6 @@ public class JFrameMain extends javax.swing.JFrame {
     int mouseX;
     int mouseY;
 
-   
     public void CreatePhongInfor(int tang, JPanel panel) {
         Remote lookup = null;
         ArrayList PhongInfo = new ArrayList();
@@ -68,7 +69,8 @@ public class JFrameMain extends javax.swing.JFrame {
             System.out.println(emp[1]);
         }
     }
-     public static void refreshUsers() throws SQLException, ClassNotFoundException, RemoteException {
+
+    public static void refreshUsers() throws SQLException, ClassNotFoundException, RemoteException {
         Remote lookup = null;
 
         try {
@@ -76,16 +78,17 @@ public class JFrameMain extends javax.swing.JFrame {
         } catch (NotBoundException | MalformedURLException | RemoteException ex) {
             Logger.getLogger(JFrameMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
+
         CheckGetAllUser user = (CheckGetAllUser) lookup;
         Vector<String> title = new Vector<>();
         title.add("Mã Nhân Viên");
         title.add("User");
         title.add("Password");
-        
+
         tblUserList.setModel(new DefaultTableModel(user.getAllUsers(), title));
     }
-     public static void refreshAllEmployee() throws SQLException, ClassNotFoundException, RemoteException {
+
+    public static void refreshAllEmployee() throws SQLException, ClassNotFoundException, RemoteException {
         Remote lookup = null;
 
         try {
@@ -93,10 +96,10 @@ public class JFrameMain extends javax.swing.JFrame {
         } catch (NotBoundException | MalformedURLException | RemoteException ex) {
             Logger.getLogger(JFrameMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-       CheckGetAllEmpoyee emp = (CheckGetAllEmpoyee) lookup;
-        
+        CheckGetAllEmpoyee emp = (CheckGetAllEmpoyee) lookup;
+
         Vector<String> title = new Vector<>();
-         
+
         title.add("MANHANVIEN");
         title.add("TENNHANVIEN");
         title.add("MACHUCVU");
@@ -104,12 +107,53 @@ public class JFrameMain extends javax.swing.JFrame {
         title.add("NGAYSINH");
         title.add("DIACHI");
         title.add("SDT");
-        
+
 //        tblEmpList.setModel(new DefaultTableModel(emp.GetAllEmpoyee(), title));
-    tblEmpList.setModel(new DefaultTableModel(emp.GetAllEmpoyee(), title));
+        tblEmpList.setModel(new DefaultTableModel(emp.GetAllEmpoyee(), title));
     }
+
+    public static void refreshEmployeeID() throws SQLException, ClassNotFoundException, RemoteException {
+        Remote lookup = null;
+        try {
+            lookup = Naming.lookup("rmi://localhost:1099/empID");
+        } catch (NotBoundException | MalformedURLException | RemoteException ex) {
+            Logger.getLogger(JFrameMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        CheckGetOnlyID empID = (CheckGetOnlyID) lookup;
+        Vector<String> list = empID.GetOnlyID();
+        cbbNewUser.removeAllItems();
+        for (String string : list) {
+            cbbNewUser.addItem(string);
+
+        }
+    }
+
+    class checkEmptyNewUser extends Thread {
+
+        @Override
+        public void run() {
+            System.out.println("Thread started");
+            while (true) {
+                try {
+                    sleep(1);
+                    if (txtNewUserAddUser.getText().trim().isEmpty() || txtNewUserAddPass.getText().trim().isEmpty()) {
+                        btnNewUserAddUser.setEnabled(false);
+
+                    } else {
+                        btnNewUserAddUser.setEnabled(true);
+                    }
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(loginScreen.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+    }
+    checkEmptyNewUser checkEmptyNewUser = new checkEmptyNewUser();
+
     public JFrameMain() {
         initComponents();
+        checkEmptyNewUser.start();
         Remote lookup = null;
         try {
             refreshUsers();
@@ -121,13 +165,17 @@ public class JFrameMain extends javax.swing.JFrame {
         } catch (SQLException | ClassNotFoundException | RemoteException ex) {
             Logger.getLogger(JFrameMain.class.getName()).log(Level.SEVERE, null, ex);
         }
+        try {
+            refreshEmployeeID();
+        } catch (SQLException | ClassNotFoundException | RemoteException ex) {
+            Logger.getLogger(JFrameMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
         jcbGiaPhong.addItem("Giá Theo Giờ");
         jcbGiaPhong.addItem("Giá Theo Đêm");
         jcbGiaPhong.addItem("Giá Theo Ngày");
         CreatePhongInfor(2, jPanel30);
         CreatePhongInfor(3, jPanel39);
         CreatePhongInfor(4, jPanel43);
-
 
         try {
 
@@ -275,6 +323,8 @@ public class JFrameMain extends javax.swing.JFrame {
         jLabel30 = new javax.swing.JLabel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        btnNewAccAddAcc = new javax.swing.JButton();
+        btnNewAccClear = new javax.swing.JButton();
         pnlUser = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblUserList = new javax.swing.JTable();
@@ -286,9 +336,11 @@ public class JFrameMain extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        cbbNewUser = new javax.swing.JComboBox<>();
+        txtNewUserAddUser = new javax.swing.JTextField();
+        txtNewUserAddPass = new javax.swing.JPasswordField();
+        btnNewUserAddUser = new javax.swing.JButton();
+        btnNewUserClear = new javax.swing.JButton();
         warehouseManagement = new javax.swing.JPanel();
         MenuTopWareHouse = new keeptoo.KGradientPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -420,7 +472,7 @@ public class JFrameMain extends javax.swing.JFrame {
                 .addComponent(diachi)
                 .addGap(192, 192, 192)
                 .addComponent(programName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, Short.MAX_VALUE)
                 .addComponent(minimizerWindow, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(maximizerWindow, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -678,7 +730,7 @@ public class JFrameMain extends javax.swing.JFrame {
         LeftMenuPanelLayout.setHorizontalGroup(
             LeftMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LeftMenuPanelLayout.createSequentialGroup()
-                .addComponent(kGradientPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, Short.MAX_VALUE)
+                .addComponent(kGradientPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
                 .addContainerGap())
         );
         LeftMenuPanelLayout.setVerticalGroup(
@@ -960,7 +1012,7 @@ public class JFrameMain extends javax.swing.JFrame {
                 .addComponent(jLabel130)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SignUpCustomer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         RoomStatus.setBackground(new java.awt.Color(255, 255, 255));
@@ -1508,6 +1560,22 @@ public class JFrameMain extends javax.swing.JFrame {
         jFormattedTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jFormattedTextField2.setCaretColor(new java.awt.Color(153, 51, 255));
 
+        btnNewAccAddAcc.setBackground(new java.awt.Color(255, 255, 255));
+        btnNewAccAddAcc.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnNewAccAddAcc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images2/icons8-checkmark-40.png"))); // NOI18N
+        btnNewAccAddAcc.setText("Tạo Mới");
+        btnNewAccAddAcc.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        btnNewAccAddAcc.setBorderPainted(false);
+        btnNewAccAddAcc.setContentAreaFilled(false);
+
+        btnNewAccClear.setBackground(new java.awt.Color(255, 255, 255));
+        btnNewAccClear.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnNewAccClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images2/icons8-broom-40.png"))); // NOI18N
+        btnNewAccClear.setText("Nhập Lại");
+        btnNewAccClear.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        btnNewAccClear.setBorderPainted(false);
+        btnNewAccClear.setContentAreaFilled(false);
+
         javax.swing.GroupLayout pnlNewAccLayout = new javax.swing.GroupLayout(pnlNewAcc);
         pnlNewAcc.setLayout(pnlNewAccLayout);
         pnlNewAccLayout.setHorizontalGroup(
@@ -1519,7 +1587,7 @@ public class JFrameMain extends javax.swing.JFrame {
                         .addGroup(pnlNewAccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                         .addGroup(pnlNewAccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1536,13 +1604,16 @@ public class JFrameMain extends javax.swing.JFrame {
                             .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(54, 54, 54)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(pnlNewAccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(366, 366, 366))
+                            .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(120, 120, 120)
+                .addGroup(pnlNewAccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnNewAccAddAcc)
+                    .addComponent(btnNewAccClear))
+                .addGap(129, 129, 129))
         );
 
         pnlNewAccLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jFormattedTextField1, jFormattedTextField2, jTextField3, jTextField4, jTextField5, jTextField6, jTextField8});
@@ -1556,24 +1627,30 @@ public class JFrameMain extends javax.swing.JFrame {
                         .addGap(15, 15, 15)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(pnlNewAccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlNewAccLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addGroup(pnlNewAccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnNewAccAddAcc)))
                 .addGroup(pnlNewAccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlNewAccLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlNewAccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlNewAccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlNewAccLayout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlNewAccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlNewAccLayout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnlNewAccLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)
+                        .addComponent(btnNewAccClear)))
                 .addGap(24, 24, 24)
                 .addGroup(pnlNewAccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1728,31 +1805,71 @@ public class JFrameMain extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(153, 51, 255));
         jLabel3.setText("Password");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbbNewUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jTextField1.setFont(new java.awt.Font("Sinhala MN", 1, 24)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(153, 51, 255));
-        jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(153, 51, 255)));
+        txtNewUserAddUser.setFont(new java.awt.Font("Sinhala MN", 1, 24)); // NOI18N
+        txtNewUserAddUser.setForeground(new java.awt.Color(153, 51, 255));
+        txtNewUserAddUser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtNewUserAddUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(153, 51, 255)));
 
-        jPasswordField1.setFont(new java.awt.Font("Sinhala MN", 1, 24)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(153, 51, 255));
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(153, 51, 255)));
+        txtNewUserAddPass.setFont(new java.awt.Font("Sinhala MN", 1, 24)); // NOI18N
+        txtNewUserAddPass.setForeground(new java.awt.Color(153, 51, 255));
+        txtNewUserAddPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtNewUserAddPass.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(153, 51, 255)));
+        txtNewUserAddPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNewUserAddPassActionPerformed(evt);
+            }
+        });
+
+        btnNewUserAddUser.setBackground(new java.awt.Color(255, 255, 255));
+        btnNewUserAddUser.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnNewUserAddUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images2/icons8-checkmark-40.png"))); // NOI18N
+        btnNewUserAddUser.setText("Tạo Mới");
+        btnNewUserAddUser.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        btnNewUserAddUser.setBorderPainted(false);
+        btnNewUserAddUser.setContentAreaFilled(false);
+        btnNewUserAddUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewUserAddUserActionPerformed(evt);
+            }
+        });
+
+        btnNewUserClear.setBackground(new java.awt.Color(255, 255, 255));
+        btnNewUserClear.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnNewUserClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images2/icons8-broom-40.png"))); // NOI18N
+        btnNewUserClear.setText("Nhập Lại");
+        btnNewUserClear.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        btnNewUserClear.setBorderPainted(false);
+        btnNewUserClear.setContentAreaFilled(false);
+        btnNewUserClear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnNewUserClearMouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlNewUserLayout = new javax.swing.GroupLayout(pnlNewUser);
         pnlNewUser.setLayout(pnlNewUserLayout);
         pnlNewUserLayout.setHorizontalGroup(
             pnlNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlNewUserLayout.createSequentialGroup()
-                .addGap(301, 301, 301)
-                .addGroup(pnlNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
-                .addGroup(pnlNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlNewUserLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnNewUserAddUser, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnNewUserClear, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlNewUserLayout.createSequentialGroup()
+                        .addGap(301, 301, 301)
+                        .addGroup(pnlNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(54, 54, 54)
+                        .addGroup(pnlNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbbNewUser, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtNewUserAddUser)
+                            .addComponent(txtNewUserAddPass, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlNewUserLayout.setVerticalGroup(
@@ -1761,19 +1878,23 @@ public class JFrameMain extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addGroup(pnlNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbbNewUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(pnlNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlNewUserLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNewUserAddUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtNewUserAddPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlNewUserLayout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addGroup(pnlNewUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNewUserAddUser, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNewUserClear, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlUserLayout = new javax.swing.GroupLayout(pnlUser);
@@ -2468,7 +2589,7 @@ public class JFrameMain extends javax.swing.JFrame {
                     .addComponent(MenuLeftWareHouse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(warehouseManagementLayout.createSequentialGroup()
                         .addComponent(WarehouseContent, javax.swing.GroupLayout.PREFERRED_SIZE, 778, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 108, Short.MAX_VALUE))))
+                        .addGap(0, 111, Short.MAX_VALUE))))
         );
 
         containPanel.add(warehouseManagement, "warehouseManagement");
@@ -2767,8 +2888,46 @@ public class JFrameMain extends javax.swing.JFrame {
     }//GEN-LAST:event_lbPhongMouseClicked
 
     private void jtxtNgayDiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtNgayDiActionPerformed
-            
+
     }//GEN-LAST:event_jtxtNgayDiActionPerformed
+
+    private void btnNewUserClearMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewUserClearMouseReleased
+        txtNewUserAddUser.setText("");
+        txtNewUserAddPass.setText("");
+        txtNewUserAddUser.requestFocus();
+    }//GEN-LAST:event_btnNewUserClearMouseReleased
+
+    private void txtNewUserAddPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNewUserAddPassActionPerformed
+        btnNewUserAddUserActionPerformed(evt);
+    }//GEN-LAST:event_txtNewUserAddPassActionPerformed
+
+    private void btnNewUserAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewUserAddUserActionPerformed
+        if (btnNewUserAddUser.isEnabled()) {
+            Remote lookup = null;
+
+            try {
+                lookup = Naming.lookup("rmi://localhost:1099/signin");
+            } catch (NotBoundException | MalformedURLException | RemoteException ex) {
+                Logger.getLogger(loginScreen.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            MySignIn myremote = (MySignIn) lookup;
+
+            try {
+                myremote.newUser(cbbNewUser.getSelectedItem().toString(), txtNewUserAddUser.getText().trim(), txtNewUserAddPass.getText().trim());
+                refreshUsers();
+                btnNewUserClearMouseReleased(null);
+                txtNewUserAddUser.requestFocus();
+            } catch (SQLException ex) {
+                Logger.getLogger(JFrameMain.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(JFrameMain.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (RemoteException ex) {
+                Logger.getLogger(JFrameMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        }
+    }//GEN-LAST:event_btnNewUserAddUserActionPerformed
 
 //    public void setColor(JPanel panel) {
 //        panel.setForeground(new java.awt.Color(151, 2, 254));
@@ -2834,6 +2993,10 @@ public class JFrameMain extends javax.swing.JFrame {
     private javax.swing.JButton btnLoginLogin3;
     private javax.swing.JButton btnLoginLogin4;
     private javax.swing.JButton btnLoginLogin5;
+    private javax.swing.JButton btnNewAccAddAcc;
+    private javax.swing.JButton btnNewAccClear;
+    private javax.swing.JButton btnNewUserAddUser;
+    private javax.swing.JButton btnNewUserClear;
     private javax.swing.JButton btnOptionAccount;
     private javax.swing.JButton btnOptionUser;
     private javax.swing.JButton btnOptionUser1;
@@ -2845,13 +3008,13 @@ public class JFrameMain extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbbMatHang;
     private javax.swing.JComboBox<String> cbbMatHang1;
     private javax.swing.JComboBox<String> cbbMatHang2;
+    public static javax.swing.JComboBox<String> cbbNewUser;
     private javax.swing.JLabel closeWindow;
     private javax.swing.JPanel containPanel;
     private javax.swing.JLabel diachi;
     private javax.swing.JLabel image;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField13;
@@ -2947,7 +3110,6 @@ public class JFrameMain extends javax.swing.JFrame {
     private static javax.swing.JPanel jPanel43;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -2960,7 +3122,6 @@ public class JFrameMain extends javax.swing.JFrame {
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -3000,6 +3161,8 @@ public class JFrameMain extends javax.swing.JFrame {
     private javax.swing.JPanel roomManagement;
     public static javax.swing.JTable tblEmpList;
     public static javax.swing.JTable tblUserList;
+    private javax.swing.JPasswordField txtNewUserAddPass;
+    private javax.swing.JTextField txtNewUserAddUser;
     private javax.swing.JPanel warehouseManagement;
     // End of variables declaration//GEN-END:variables
 }

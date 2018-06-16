@@ -29,7 +29,7 @@ public class Room extends UnicastRemoteObject implements CheckRoom {
     public ArrayList checkRoom(int Tang, ArrayList Phong) throws SQLException, ClassNotFoundException, RemoteException {
 //        ArrayList Phong = new ArrayList();
         Connection connection = controllerConnectDB.connecDB();
-        String request = "select MAPHONG,TINHTRANG from phong inner join Tang on phong.MATANG = Tang.MATANG where Tang.MATANG = ?";
+        String request = "select SOPHONG,TINHTRANG from phong inner join Tang on phong.MATANG = Tang.MATANG where Tang.MATANG = ?";
         PreparedStatement stmt = connection.prepareStatement(request);
         stmt.setInt(1, Tang);
         ResultSet rs = stmt.executeQuery();
@@ -37,7 +37,7 @@ public class Room extends UnicastRemoteObject implements CheckRoom {
 //        
         while (rs.next()) {
 //            str = rs.getString("TINHTRANG");
-            String[] array = {rs.getString("MAPHONG"), rs.getString("TINHTRANG")};
+            String[] array = {rs.getString("SOPHONG"), rs.getString("TINHTRANG")};
 
             Phong.add(array);
 //           

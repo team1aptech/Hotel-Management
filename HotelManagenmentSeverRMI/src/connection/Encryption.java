@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  */
 public class Encryption {
     
-    public static String encryptString(String srt){
+    public static String encryptPassword(String srt){
         try {
             MessageDigest md5 = MessageDigest.getInstance("MD5");
             
@@ -45,7 +45,7 @@ public class Encryption {
         while (true) {
             System.out.print("Your String: ");
             input = new Scanner(System.in);
-            System.out.println(encryptString(input.nextLine()));
+            System.out.println(encryptPassword(input.nextLine()));
         }
     }
     

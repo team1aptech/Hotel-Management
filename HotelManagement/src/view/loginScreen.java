@@ -308,7 +308,7 @@ public class loginScreen extends javax.swing.JFrame {
 
             }
 
-        }, 1000 * 5);
+        }, 1000 * 3);
 
 
     }//GEN-LAST:event_btnLoginLoginActionPerformed

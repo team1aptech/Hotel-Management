@@ -5,6 +5,7 @@
  */
 package hotelmanagenmentseverrmi;
 
+import connection.Encryption;
 import connection.controllerConnectDB;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -32,7 +33,7 @@ public class SignIn extends UnicastRemoteObject implements MySignIn{
         String request = "Select * from Users where Username = ? and Pass = ?";
         PreparedStatement stmt = connection.prepareStatement(request);
         stmt.setString(1, Username);
-        stmt.setString(2, Pass);
+        stmt.setString(2, Encryption.encryptPassword(Pass));
         ResultSet rs = stmt.executeQuery();
         boolean flag =false;
         if (rs.next()) flag = true;
@@ -41,6 +42,20 @@ public class SignIn extends UnicastRemoteObject implements MySignIn{
         connection.close();
         return flag;
     }
+
+    @Override
+    public void newUser(String MANHANVIEN, String Username, String Pass) throws SQLException, ClassNotFoundException, RemoteException {
+        Connection connection = controllerConnectDB.connecDB();
+        String request = " insert into Users values(?,?,?) ";
+        PreparedStatement stmt = connection.prepareStatement(request);
+        stmt.setString(1, MANHANVIEN);
+        stmt.setString(2, Username);
+        stmt.setString(3, Encryption.encryptPassword(Pass));
+        stmt.execute();
+    }
+
+   
+   
 
    
     

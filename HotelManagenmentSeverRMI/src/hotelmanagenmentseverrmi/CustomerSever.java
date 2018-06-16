@@ -47,7 +47,7 @@ public class CustomerSever extends UnicastRemoteObject implements Customer{
 
     @Override
     public Vector getGiaPhong(String MaPhong) throws SQLException, ClassNotFoundException, RemoteException {
-        String sql = "select GIAPHONGMOTGIO,GIAPHONGMOTNGAY,GIAPHONGQUADEM from phong where MAPHONG like ?";
+        String sql = "select GIAPHONGMOTGIO,GIAPHONGMOTNGAY,GIAPHONGQUADEM from phong where SOPHONG like ?";
         Connection con = controllerConnectDB.connecDB();
         PreparedStatement pstm = con.prepareStatement(sql);
         pstm.setString(1, MaPhong);

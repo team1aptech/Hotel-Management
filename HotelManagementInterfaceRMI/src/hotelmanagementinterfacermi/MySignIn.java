@@ -16,7 +16,8 @@ import java.sql.SQLException;
  */
 public interface MySignIn extends Remote{
    public boolean checkPass(String Username, String Pass) throws SQLException, ClassNotFoundException,RemoteException;
+   public void newUser(String MANHANVIEN, String Username, String Pass) throws SQLException, ClassNotFoundException,RemoteException;
+
     
-    
-//    int tinhtong(int a, int b);
+
 }
